@@ -1,0 +1,101 @@
+LİNUX YAZ KAMPI 2016 NOTLARI
+
+6 Temmuz 2016 Cumartesi
+
+Linux işletim sistemi değil, işletim sistemi çekirdeğidir.
+Çekirdek donanıma hükmeder.
+GNU Linux işletim sistemi, çekirdeği Linux.
+Her şey dosyadan oluşur.
+Linux C dilinde yazılmıştır.
+
+BIOS : Baştaki mavi ekran. İşletim sisteminin açılma aşamasına gider. RAM'le çalışır.
+Shell (Kabuk), Kernel (Çekirdek), Shell'de çalışırız.
+
+/bin : Home kullanıcısının kullanabileceği komutlar
+/sbin : Root kullanıcısının kullanabileceği komutlar
+/dev : Diskle ilgili her şey buradadır
+~ (Kullanıcı olduğunu gösterir)
+d (Dizin olduğunu gösterir)
+/ (Root olduğunu gösterir )
+l (Link olduğunu gösterir, kısayol)
+
+pwd : Hangi dizinde olduğunu gösterir
+ls : Bulunduğumuz dizinin altında ne var
+ls -l : Ayrıntılı listeler
+ls -R : Bulunduğun dizin ve altındakilerin tamamı (ctrl c devam eden işlemi durdurur)
+
+# Mesela l yazıp tab'a 2 kez basarsan l ile başlayan komutlar geliyor.
+
+# va yazıp tab'a basarsan var diye tamamlar.
+
+ls -d : Dizinleri listeliyor
+clear : Temizler
+
+# sudo apt-get install apache gibi komutlarda ROOT YETKİSİ ister. Root'ta çalışmak tehlikelidir. Tek komutla kendini silebilir.
+Bu tehlikeyi göze almak istemeyiz. O sebeple sudo su komutu tek seferlik root gibi davranmayı sağlar.
+
+# Kullanıcıyken (~#) su yazarsan root olursun.
+
+# Root'tayken exit yazarsan kullanıcıya geçersin. Tekrar exit yazarsan çıkış yaparsın.
+
+Renkleri;
+
+Lacivert : Dizin
+Açık mavi : Link
+Yeşil : Çalıştırılabilir dosyalar
+Beyaz : Normal dosya
+
+swap : RAM yetersiz gelince diskten yer veriyoruz. RAM'in 2 katı kadar
+ls -d : Dizinleri listeler
+cd : Dizin değiştirme 
+cd var : 'var' a gider 
+.. : 1 dizin geri götürür
+../.. : 2 dizin geri götürür
+
+Absolute path (Kesin yol)
+Relative path (Değişken yol)
+
+cd ../../etc/ : 'Relative path' örneği. Bulunduğun dizinden kök dizine kadar gidersin, sonra gitmek istediğin yere gidersin
+
+cd / home / sema (sema burada kullanıcı adı) Bu yol da 'Absolute path' örneği
+
+ifconfig : ağ kart bilgisi
+ifconfig -a : Bütün ağ kartlarının bilgisi (a : all)
+
+iwconfig : Wireless
+
+nameserver 8.8.8.8 (Google DNS'i), ctrl O (kabul ettirmek), enter, ctrl X (çıkmak)
+nano/etc/resolu.conf (DNS Tanımlama)
+
+nslookup : İsim çözümleme (nslookup google.com gibi)
+
+TCP Dump : Network'u dinler. Gelişmiş versiyonu Wireshark'tır
+
+tcpdump -D : Dinleyebileceği ağ kartları
+tcpdump -i ... : ... yerine ne yazarsan onu dinler. (Mesela eth0 yazarsan eth0'ı dinler)
+man tcpdump: Araçla ilgili detaylı bilgi verir, aşırı detaylı
+tcpdump --help : Araçla ilgili kısa az ve öz bilgi verir
+tcpdump -i eth0 -w dump.pcap : Dinlediği eth0'ı dump.pcap adlı dosya oluşturup dinler
+tcpdump -r dump.pcap : dump.pcap'i okur
+
+apt-get install wireshark : Wireshark'ı kurar (apt-get ubuntu için geçerlidir)
+Arp : Arp tablosu görülür (Arp komutunu networkte göreceğiz)
+traceroute : Paketin geçtiği routerları gösterir
+
+mkdir dizin: dizin dizinini oluşturur
+mkdir -p dizin/dizin1/dizin2 alt alta dizin oluşturur
+rmdir : boş dizinleri siler
+lm -rf : Bulunduğu dizinden başlayıp tamamen her şeyi siler
+
+touch : Boş bir dosya oluşturur
+cat test : Test diye dosya yoksa oluşturur, oluşturulan dosyanın içindekileri gösterir
+
+touch/test
+start/test
+
+mv : dosya veya dizini taşımak, adını değiştirmek
+setxkbmap tr : türkçe karakterleri kullanılır yapar 
+
+echo semaDemir (dosyaya içerik yaz) > test ( test dosyasının içine semaDemir yazar )
+sort < test ( dosyanın içeriği görüntülenir )
+echo ... >> test ( 2 satır alta kayar )
