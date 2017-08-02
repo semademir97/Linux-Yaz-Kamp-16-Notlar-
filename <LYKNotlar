@@ -1,101 +1,919 @@
-LİNUX YAZ KAMPI 2016 NOTLARI
+             LİNUX YAZ KAMPI
+LİNUX SİSTEM YÖNETİMİ 1. DÜZEY DERS NOTLARI
 
-6 Temmuz 2016 Cumartesi
+6 AĞUSTOS 2016 CUMARTESİ 
 
-Linux işletim sistemi değil, işletim sistemi çekirdeğidir.
+Linux işletim sistemi değil sistem çekirdeğidir.
 Çekirdek donanıma hükmeder.
-GNU Linux işletim sistemi, çekirdeği Linux.
-Her şey dosyadan oluşur.
+GNU Linux işletim sistemi, Linux sistem çekirdeğidir.
+Linux'ta her şey dosyadır.
 Linux C dilinde yazılmıştır.
 
-BIOS : Baştaki mavi ekran. İşletim sisteminin açılma aşamasına gider. RAM'le çalışır.
-Shell (Kabuk), Kernel (Çekirdek), Shell'de çalışırız.
+BIOS: Baştaki mavi ekran. İşletim sisteminin açılma aşamasına gider, RAM ile çalışır
+Shell ( Kabuk ) Kernel ( Çekirdek ) Shell'de çalışırız.
 
-/bin : Home kullanıcısının kullanabileceği komutlar
-/sbin : Root kullanıcısının kullanabileceği komutlar
-/dev : Diskle ilgili her şey buradadır
-~ (Kullanıcı olduğunu gösterir)
-d (Dizin olduğunu gösterir)
-/ (Root olduğunu gösterir )
-l (Link olduğunu gösterir, kısayol)
+/bin: Home kullanıcısının kullanacağı komutlar
+/sbin: Root'un kullanacağı komutlar
+/dev: Diskle ilgili her şey buradadır.
+/: Root      d: Dizin          l: Link
 
-pwd : Hangi dizinde olduğunu gösterir
-ls : Bulunduğumuz dizinin altında ne var
-ls -l : Ayrıntılı listeler
-ls -R : Bulunduğun dizin ve altındakilerin tamamı (ctrl c devam eden işlemi durdurur)
+pwd: Hangi dizinde olduğumuzu gösterir
+ls: Bulunduğumuz dizinin altında ne var
+ls -l: Ayrıntılı listeler
+ls -R: Bulunduğun dizin ve altındakilerin tamamını (Ctrl c'ye basınca duruyor )
 
-# Mesela l yazıp tab'a 2 kez basarsan l ile başlayan komutlar geliyor.
+Mesela l yazıp tab'a 2 kez basınca l ile başlayan komutlar geliyor. Yazdığın harflerle başlayan tek komut varsa komutun ismini tamamlıyor.
 
-# va yazıp tab'a basarsan var diye tamamlar.
+ls -d: Dizinleri listeliyor.
+clear: Temizliyor
 
-ls -d : Dizinleri listeliyor
-clear : Temizler
+sudo apt- get install apache: Bunun gibi komutlarda root yetkisi istiyor. Root'ta çalışmak tehlikelidir. Tek bir komutla kendini silebilir.Bu tehlikeyi göze almak istemediğimizden dolayı sudo su komutu ile tek seferlik root gibi davranmamızı sağlıyor.
 
-# sudo apt-get install apache gibi komutlarda ROOT YETKİSİ ister. Root'ta çalışmak tehlikelidir. Tek komutla kendini silebilir.
-Bu tehlikeyi göze almak istemeyiz. O sebeple sudo su komutu tek seferlik root gibi davranmayı sağlar.
+#apt-get Ubuntu için, yum CentOS için paket yönetim komutudur.
 
-# Kullanıcıyken (~#) su yazarsan root olursun.
+Kullanıcıdayken su yazınca root oluyoruz.
+Root'tayken exit yazınca kullanıcıya geçeriz. Tekrar exit yazarsak çıkış yaparız.
 
-# Root'tayken exit yazarsan kullanıcıya geçersin. Tekrar exit yazarsan çıkış yaparsın.
+Dizin: lacivert           Link : açık mavi           Çalıştırılabilir dosya : yeşil                 Dosya : beyaz
+Swap : RAM yetersiz gelirse diye diskten RAM'in 2 katı kadar yer veriyoruz.
 
-Renkleri;
+ls -d: dizinleri listeler
+cd : dizin değiştirir
+cd/ var
 
-Lacivert : Dizin
-Açık mavi : Link
-Yeşil : Çalıştırılabilir dosyalar
-Beyaz : Normal dosya
+.. 1 dizin geriye götürür
+../.. 2 dizin geriye götürür
 
-swap : RAM yetersiz gelince diskten yer veriyoruz. RAM'in 2 katı kadar
-ls -d : Dizinleri listeler
-cd : Dizin değiştirme 
-cd var : 'var' a gider 
-.. : 1 dizin geri götürür
-../.. : 2 dizin geri götürür
-
-Absolute path (Kesin yol)
+Absolute path (Kesin yol )
 Relative path (Değişken yol)
 
-cd ../../etc/ : 'Relative path' örneği. Bulunduğun dizinden kök dizine kadar gidersin, sonra gitmek istediğin yere gidersin
+cd ../../etc → Relative Path
+Relative için dizine kadar gider oradan gitmek istediğimiz yere gideriz.
 
-cd / home / sema (sema burada kullanıcı adı) Bu yol da 'Absolute path' örneği
+Cd/home/sema(kullanıcı adı) → Absolute path
 
-ifconfig : ağ kart bilgisi
-ifconfig -a : Bütün ağ kartlarının bilgisi (a : all)
+ifconfig: ağ kartı bilgisi
+ifconfig -a : bütün ağ kartlarının listesi
+iwconfig : wireless
 
-iwconfig : Wireless
+DNS kaydı :
+- nameserver 8.8.8.8 (google'ın DNS'i) ctrl O (kabul ettirmek), enter, ctrl X (çıkmak)
+- nano /etc/resolu.conf → DNS tanımlama
 
-nameserver 8.8.8.8 (Google DNS'i), ctrl O (kabul ettirmek), enter, ctrl X (çıkmak)
-nano/etc/resolu.conf (DNS Tanımlama)
-
-nslookup : İsim çözümleme (nslookup google.com gibi)
-
-TCP Dump : Network'u dinler. Gelişmiş versiyonu Wireshark'tır
-
+tcpdump: Network'u dinler. Gelişmiş versiyonu wireshark'tır.
 tcpdump -D : Dinleyebileceği ağ kartları
-tcpdump -i ... : ... yerine ne yazarsan onu dinler. (Mesela eth0 yazarsan eth0'ı dinler)
-man tcpdump: Araçla ilgili detaylı bilgi verir, aşırı detaylı
-tcpdump --help : Araçla ilgili kısa az ve öz bilgi verir
-tcpdump -i eth0 -w dump.pcap : Dinlediği eth0'ı dump.pcap adlı dosya oluşturup dinler
-tcpdump -r dump.pcap : dump.pcap'i okur
+tcpdump -i … (eth0 gibi): eth0'ı dinler.
 
-apt-get install wireshark : Wireshark'ı kurar (apt-get ubuntu için geçerlidir)
-Arp : Arp tablosu görülür (Arp komutunu networkte göreceğiz)
-traceroute : Paketin geçtiği routerları gösterir
+nslookup : isim çözümleme gibi nslookup google.com gibi
 
-mkdir dizin: dizin dizinini oluşturur
-mkdir -p dizin/dizin1/dizin2 alt alta dizin oluşturur
-rmdir : boş dizinleri siler
-lm -rf : Bulunduğu dizinden başlayıp tamamen her şeyi siler
+man tcpdump: tcpdump hakkında bilgi verir, çokça ayrıntılı
+tcpdump - - help: kısa, az ve öz bilgi 
+tcpdump -i eth0 -w dump.pcop : dinlediği eth0'ı dump.pcop adlı dosya oluşturarak dinler
+tcpdump -r dump.pcop: dump.pcop' ı okur 
 
-touch : Boş bir dosya oluşturur
-cat test : Test diye dosya yoksa oluşturur, oluşturulan dosyanın içindekileri gösterir
+apt-get install wireshark → wireshark'ı kurar
+Arp → arp tablosu görülür
+traceroute → paketin geçtiği router'ları gösterir
 
-touch/test
-start/test
+mkdir dizin → Dizin oluşturur
+mkdir -p dizin/dizin1/dizin2 → alt alta dizin oluşturur
+rmdir → dizinleri siler (boş dizinleri)
+lm -rf → bulunduğun dizinden başlayıp her şeyi siler
 
-mv : dosya veya dizini taşımak, adını değiştirmek
-setxkbmap tr : türkçe karakterleri kullanılır yapar 
+touch → boş dosya oluşturur
+cat test → oluşturulan dosyanın içinde ne var ne yok gösterir
+touch/test                  start/test
+mv → dosya veya dizini taşımak, adını değiştirmek
+setxkbmap tr → türkçe karakterleri kullanılır yapar
 
-echo semaDemir (dosyaya içerik yaz) > test ( test dosyasının içine semaDemir yazar )
-sort < test ( dosyanın içeriği görüntülenir )
-echo ... >> test ( 2 satır alta kayar )
+echo ... > test → dosyaya içerik yazar
+sort < test  → dosyanın içeriğini görüntüler
+echo  …. >> test → içindekileri silip yazmaz, bir alt satıra geçip yazar
+ctrl c → devam eden işlemi durdurur
+
+7 AĞUSTOS PAZAR
+
+ls → içeriği görüntüler
+rm test → testi siler
+touch test → testi oluşturur
+echo ...> test → içine içeriği yazar
+cat < test → okur
+cd - → geldiğin dizine seni geri gönderir
+
+#echo ... > test yaparsan içindeki şeyleri silip ... yazar
+ echo ...  >> test yaparsan alt satıra yazar 
+
+sort < licence.txt > test    sort → okuma komutu
+echo ... > test
+sort < test ya da cat < test   
+
+# cat ile sort aynı 
+
+cd ../../usr/share → relative path 
+cd /usr/share → absolute path
+cd / sema (kullanıcı adı) → ararsan çalışmaz. Kök dizinde sema isimli kullanıcıyı arar onu da bulamaz. [ cd /home/sema ]
+
+# Kök dizine giderek aradığımız absolute path
+
+grep → dosya içinde belli şeyler arar 
+cat licence.txt | grep companents → companents kelimesini licence.txt de arar. Küçük büyük harf duyarlı 
+ls -l | grep olmayan > test4 
+
+echo “bu bir testtir” > yeni.txt | echo “bu başka bir testtir” >> yeni.txt
+cat yeni.txt çıktısı → bu bir testtir
+                       bu başka bir testtir
+
+cp → kopyalama komutu 
+cp test.txt /home 
+
+. → kendisi
+.. → bir üst komut
+
+touch linux.txt | echo selam > linux.txt   → linux.txt diye dosya oluşturacak içine selam yazacak
+cat linux.txt                                                   okuyacak
+
+listelediğimizde başında d varsa dizin
+                         l varsa link
+                         - varsa dosya  
+
+loadkeys trq.map →  klavyeyi türkçe yapar
+
+echo naber > selam.txt | xargs echo selam.txt | xargs echo selamlar >> selam.txt
+
+#  | ile kullanılınca cat/sort kullanamayız. Xargs kullanırız
+
+grep -i → büyük küçük duyarlılığını kaldırır
+
+more: içeriği büyük olan dosyaları tab'a bastıkça 10'ar 10'ar okur
+
+info → Çok detaylı
+man → Ayrıntılı
+help → daha özel özet bilgiler 
+
+info > man > help
+
+less → dosyanın içeriği hakkında bilgi verir.
+Uptime -Z → sistem hakkında genel bilgi verir
+last → giriş çıkış yapmış kullancılar
+touch → boş dosya oluşturma 
+who → sistemdeki kullancılar
+cat -n … ( dosyanın ism ) → dosyanın her bir satırının numarasını gösterir
+move → yer değiştirir → isim değiştirir
+
+mv test.txt /home/ → home'a taşır 
+mv test.txt test123 → isim değiştirir
+cp /home/sema/dosya2/home/sema/dizinim
+ls -l home /sema/dizinim  → dosya2'yi dizinim'e taşır 
+
+tmp → herkes ulaşabilir
+
+ln dosya/tm
+ln -s dosya/tmp → soft link (kısayol windowstaki gibi full path)
+ln /home/sema (kullanıcı adı)/dosya/home/sema/dosya -hard hard link)
+ln -s/home/sema/dosya/home/sema/dosya -soft (soft link
+
+Dosyayı silersen dosya – soft silinir ama dosya – hard kalır. Çünkü inodu silinmedi.
+
+Stat test.txt → test.txt hakkında bilgiler
+
+man ls > test.txt
+cat -n test.txt → ls'in man sayfasındaki bilgileri test.txt'ye aktardı. -n parametresiyle satırları numaralandırdı.
+
+Mkdir → dizin oluşturma 
+
+mkdir /dizinim
+ls / → kök dizinde dizinim adlı dizin oluşturuyorsun.
+
+Cp → dosya kopyalar 
+cp -r → dizin kopyalar 
+hostname → bilgisayar adı
+file ping
+
+ls -lh | grep “dizi” → diziyi bulur
+
+rm -rf dizinim / → dizin siler 
+rm -rf test.txt → dosya siler 
+
+# rm'nin geri dönüşü yok. Silersen gitti bitti her şey
+
+rm test.txt → silmeye emin misin diye sorar dosya
+rm -r dizin/ → yine sorar dizin
+
+rm -help → rm hakkında bilgi
+rm -v → hangi işlemleri yaptığını söyler 
+
+8 AĞUSTOS PAZARTESİ
+
+halt → bilgisayarı kapatır ama gücü tam olarak kesilmez 
+shutdown -h now 
+shutdown -t -s 60
+
+uname -a → sistemin tüm bilgileri 
+uname -r → sistemin sadece kernel sürümü 
+
+setxkbmap tr → klavyeyi anlık olarak türkçeye çevirir
+password root → root'un parolasını değiştirir
+
+network kartları listesi : ifconfig, ifconfig -a
+ifconfig eth(x) 1.1.1.1 netmask 255.255.255.240 (Aktif ağ birimine 1.1.1.1 ip adresinin tanımı)
+
+mkdir /home/Desktop/Notlar → Masaüstünde Notlar isimli klasör açar 
+mv /home/ Desktop /Notlar/home / Desktop/ .Notlar → Görünmez yapar 
+
+ls -a /home /Desktop → gizli olan dosyaları gösterir
+
+touch /home/Desktop/.Notlar/Cnotları → Görünmez dosyanın içine Cnotları dosyasını oluşturur
+nano /home/Desktop/.Notlar/Cnotları → nano ile Cnotları içine 
+man pwd, info pwd, help pwd → pwd hakkında bilgi
+more test.txt, less test.txt → Bu dosyayı sayfa sayfa görüntüler
+cat test.txt | grep “dsfgf” → 
+
+echo “IEEE” > /etc/hostname → Bilgisayarın adını IEEE yapar
+
+which man → man nerede onu gösterir
+
+head test.txt → baştaki 10 satırı gösterir
+head -n 20 test.txt → baştaki 20 satırı gösterir 
+
+cat -n test.txt | head -n 20 → ilk 20 satırı bastığının kanıtı 
+
+ls | wc -l → kaç tane dosya var onu sayar 
+
+ls -lah | head -n → baştaki 5 satırı gösterir
+
+tail ssh_config → ssh_config dosyasının son 10 satırını gösterir
+
+cat -n ssh_config | tail → son 10 satırı gösterdiğinin kanıtı 
+
+ll = ls -l
+
+d rwx rwx rwx  sema root  ..(tarih) .. (saat)    izinler  
+→ d dizin olduğunu gösterir
+→ rxw user (izinleri) 
+→ rwx group (izinleri)
+→ rwx other (izinleri)
+→ izinler dizini sema kullanıcısına , root grubuna ait
+
+r  → 4   read 
+w →2   write 
+x → 1   executable → çalıştırma izni 
+
+chmod → izin değiştirir
+chown → dosya sahibini ve grubunu değiştirir 
+configurasyon dosyaları etc'dedir
+su … (kullanıcı adı ) → kullanıcıda etkin oluruz
+sudo passwd … (kullanıcı adı )
+sudo vi /etc/ sudoers
+
+
+chmod u-w test → test dizininin kullanıcılarının yazma yetkisini kaldırır
+chmod u+w test → test dizininin kullanıcılarına yazma yetkisini verir 
+chmod o+rwx test → diğerlerine tüm izinleri verir 
+chmod ug+x test → kullanıcı ve gruba çalıştırma izni 
+chmod -x test → hepsinden çalıştırma iznini kaldırır 
+chmod 614 test → ( u:r+w, g:x, o:r izinilerini verir )
+chmod ugo+rwr test → (u:r, g:w,o:r izinlerini verir )
+
+etc passwd   man useradd
+cat /etc/passwd → kullanıcı bilgileri 
+
+(kullanıcı adı) : x : 1000 : 1000 : ( kullanıcının kendi adı)  /home /8kullanıcı adı) : /bin/bas (kabuk )
+
+x → eskiden parola varmış fakat güvenli olmadığı için kaldırılmış
+kabuk → hangi yolu kullandığı 
+
+Bulunduğun kullanıcının parolasını değiştiremezsin. Başka kullanıcınınkini değiştirebilirsin.
+
+Man chage 
+.
+.
+. /options  → içinde options geçenleri gösterir
+
+chage -l .. (kullanıcı adı)
+
+asropos … (directory yazmış olalım mesela) → directory ile ilgili komutları getirir
+
+chage -l username ( tarihi falan görürsün )
+chage -E …./../.. (tarihi değiştirirsin)
+chage -l … (kullanıcı adı) → tarihin değiştiğini görürsün
+
+* → her şey demek
+
+ll 
+sudo chmod –reference = dizinler dizin  → dizin ile dizinlerin izinleri aynı
+ll
+
+cat /etc/group → grup bilgileri
+cat /etc/gshadow → grup parola bilgileri 
+cat /etc/passwd → kullanıcı bilgileri 
+cat /etc/shadow → kullanıcı parola bilgileri 
+passwd .. (kullanıcı adı) → kullanıcıya parola verir
+useradd -d/more/.. (kullanıcı adı) → home'da  .. isimli kullanıcı oluşturur
+adduser -f … (parola)  … (kullanıcı adı) → kullanıcıyı oluştururken aynı anda parolayı da verir 
+which .. →  nerede olduğunu söyler 
+
+9 AĞUSTOS SALI
+
+./ exe → Çalıştırma komutu 
+ctrl u → yazdığın satırı komple siler 
+directory → dizin
+
+mkdir izin
+chattr +i izin → izinlere dokunulmazlık verdik 
+rm -rf izin/ → silemez artık izin vermez 
+
+cat ./ → gizli dosyalarla beraber her şeyi gösterir 
+
+lsattr -R → verilen izinleri sıralar 
+
+chattr -i izin / → artık silebilirim
+cat izin diyince göremeyiz, silinmiş olduğunu görürüz 
+lsattr -R /  → yazarsam kök dizindeki tüm izinleri sıralar, yer belirtmemiz gerek
+
+userdel sema → sema isimli kullanıcıyı siler 
+
+**cd / proc/ 
+    cat man info → RAM ile ilgili bilgiler 
+
+**cd/ proc/
+    cat cpu info → CPU (işlemci )  ile ilgili bilgiler 
+
+**cd /proc /
+    cat swaps → swap ile ilgili bilgiler 
+
+file … → yazdığın şeyin ne olduğunu söylüyor 
+history → en son yazdığın komutlar 
+history'den sonra !! → son kullandığın komut
+
+#  sudo → sudo ile ilgili bir komut yazdın fakat devamını hatırlayamadın. Sudo ile yazdığın son komutu verir 
+
+cat ./etc/ … (gideceğin dosya) → gizli dosyaları gösterir
+
+la || ls -l → gibi yazarsan ilk komut başarısız olursa ikinciyi çalıştırır
+; → yazdığın tüm komutları sırasıyla çalıştırır
+
+mesela ls -l;cat exe;rm exe 
+
+; yerine && koyabiliriz ama yanlışsa çalışmaz 
+
+
+paste dosya1 dosya2  
+         a    1
+         b    2
+         c    3 
+gibi sıralar 
+
+ls diyip dosyaları sırala 
+wc diyip o dosyalardan birini yaz
+
+strings /bin / cal → 2'lik sistemde yazılmış dosyaları okumamızı sağlar 
+
+-c : karakter 
+-l : satır 
+-w : kelime 
+
+find / -size 500M home → 500 mb boyutundaki dosyaları bulur
+find / -size -500M home → 500 mb 'dan az boyuttaki dosyaları bulur 
+find / -size +500M home → 500 mb'dan fazla boyuttakileri bulur 
+find / size empty → boş olan dosyaları bulur 
+find / perm 777
+find / bin/ -perm 777
+find / -user .. (kullanıcı adı)
+find / -iname … (dosya adı) →i diyince küçük büyük duyarlılığı kalkar 
+find / -nogroup → hiçbir gruba dahil değil 
+find / -mtime 0 → şu andan başlayıp son 24 saate kadar değiştirilmiş dosyalar 
+find / -mtime 1 → 24 saat önceden başlayıp şimdiye kadar değiştirilen dosyalar 
+find / -mtime +1 → 2 günden daha önce değiştirilen dosyalar 
+find / -executable | wc -l → satırını sayar 
+find / -readable → okunabilenleri gösterir 
+find / -amin .. (50) → son 50 dakika 
+find / -amin +5 → son 5 dkdan önce değiştirilmiş dosyalar 
+find /-perm 777 -exec chmod 444 {}; → 777 ye sahip dosyaların hepsini 444 e çevirir. Ama bir daha çalışmaz hepsi bozulur.
+find / home /-type  f  -perm 777 -exec rm -rf {};
+ → type : dosya tipine göre 
+ → f : file (dosya)
+
+find / -type -f name 'li*' → li ile başlayan her şeyi bana göster demek
+find / home / -type f -perm 777 -exec rm {}\;
+find / -type d -name '*.name' → sonunda name olan dosyaları aratır 
+find / etc/ -type d -mtime 0 → son 1 günde değiştirilmiş dizinler
+find /type d -name '*rah*' → içinde rah geçen dosyaları arar
+
+locate → find dan daha hızlı 
+locate home 
+
+Yum : Paket yönetim sistemi 
+yum install … (nano) → nano paketini kurar 
+yum remove nano → nano paketini kaldırır 
+yum install nano -y → y/n diye sorma kur demek
+yum updates → sistem depolarının update eder 
+yum update nano → nanonun yeni versiyonu varsa onu yükler 
+yum search nano → nano var mı diye bakar 
+yum provides info → info dosyasının hangi paket tarafından kurulduğunu gösterir 
+yum list installed | wc -l
+yum list installed | grep “wget”
+yum list installed wget 
+yum check-update -Z güncellemeleri kontrol et 
+yum check-update nano → nanonun güncellemelerini kontrol eder 
+yum list → depolardaki tüm kullanılabilir paketleri listeler 
+yum grouplist → grup yapılmış paketleri listeler 
+yum groupinstall “GNOME Desktop” → Desktop'ı yükler 
+yum groupupdate → güncelleme varsa yapar 
+yum groupremove “GNOME Desktop” → Desktop'ı kaldırır 
+yum repolist all → tüm depoları listeler 
+yum clean all → her şeyi siler 
+
+cd /var/cache/yum → var'daki cache'leri siler 
+
+**  cd/etc/yum_repos.d
+    ls
+    cat centos-Base.repo | less 
+
+10 AĞUSTOS ÇARŞAMBA
+
+ps aux
+command → kullanılan komut 
+ps → arka planda çalışan süreçler 
+PID → Process ID
+cd proc/  ls
+
+ps -e → çalışan tüm süreçler 
+ps -a → çalışan tüm süreçler + birkaç bilgi daha ekler 
+ps -p … (PID) 
+ps -v -p .. (PID)
+ps -A | grep .. (ssh)
+kill -9 … (PID)
+tty → terminalin ismini verir 
+ps -a -t → terminalin ismi
+
+service ssh status 
+pidof … (sshd) → Ana süreç numarası
+
+ps -u root → root kullanıcısının çalıştırdığı tüm süreçler
+
+pgrep -lu root (daha düzenli)→ ps -u root 
+ps -p … (1,2,3 gibi görmek istediğin processleri yaz) → görmek istediklerini art arda yaz
+ps -c systemd, kthreadd, ssh → isim olarak çalışır 
+ps -u -p 1 → 1 nolu sürecin detaylı bilgisi 
+
+watch ls → komutu izler 
+init → İşletim sisteminde ilk çalışan süreç 
+
+systemd → Çekirdeğin üstüne oturur her süreci kontrol eder. Makineyi %50 daha hızlı açıp kapatır
+# System d'yi sadece Red Hat kullanır 
+
+htop top'ın gelişmiş hali 
+
+Firefox'u açıp pidof firefox, gelen process i kill -9 … (gelen process), firefox kapanır 
+kill firefox → firefox'u kapatır 
+pkill ssh → tüm ssh ailesini öldürür
+
+BIOS → Donanımı kontrol eder, donanım olmadan bilgisayar çalışmaz. Diskte MBR diye 512B'lık kısım var. Tüm bilgiler buradadır.
+
+Çekirdeği yoksa bilgisayar panic mode'a geçer 
+Disk → içinde işletim sistemi var, MBR var 
+pstree 
+
+tar → yedekleme ve arşiv oluşturma 
+tar <parametre> arşiv adı dosya
+
+**touch test
+    tar -ctf arşiv test → ya da tar -cf arşiv.tar test
+    ls → arşiv mi dosya mı anlamak için
+    file arşiv
+
+tar -xf arşiv.tar → arşivin içinde olanları açar 
+tar -rf arşiv.tar arşiv2 → arşiv.tar 'ın içine arşiv2 dosyasını ekler 
+arşiv -xvf arşiv.tar → arşivin içinde olanları listeleyerek açar 
+gzip → oluşturduğumuz tar arşivini sıkıştırırız, uzantısı gz
+gunzip → dosyayı eski haline çevirirsin açarsın 
+gzip -9 arşiv.tar → en iyi şekilde sıkıştırır 
+gzip -1 arşiv.tar → en kötü şekilde sıkıştırır 
+
+compress → sonuna Z koyar, arşive yaparız 
+uncompress → geri açar 
+bzip2
+
+** tar -cZf test.tar.Z test 
+     file test.tar.Z → compress ile sıkıştırmak için 
+
+** tar -cjf test.tar.bz2 test 
+     file test.tar.bz2  → bzip2
+
+tar -xvjf test.tar.bz2
+
+0.Seviye → Kapama
+1.Seviye → Single User Mod 
+2.Seviye → Çoklu Kullanıcı (Sistem takımı)
+3.Seviye → Çoklu Kullanıcı + İnternet (Sadece komut satırı)
+4.Seviye → Çalışmıyor 
+5.Seviye → Grafik Arayüz
+6.Seviye → Yeniden Başlatma (Reboot)
+fscdk →
+
+VİM İÇİN
+
+:q! → Kaydetmeden çıkar 
+:wq → Kaydedip çıkar 
+: →  komut modu
+I → Insert modu
+
+12 AAĞUSTOS CUMA
+
+**nano .bashrc
+    #HISTORY SETTINGS 
+    HISTSIZE=3000
+    HISTFILESIZE = 3000 → History'de 1000 tane kayıt bulunabilir. Bununla 3000 yapmış oluruz.
+
+Bash → kabuk
+
+vi .bashrc → a ya da I ile yazılabilir hale geliyor 
+
+Çekirdek → İşletim sisteminin kendisi, beyni, driverlar bütünü 
+fsdisk -l 
+
+PAM
+ID → Geçerli kullanıcının ID'si
+w → İçeride kimler var, ne yapıyor onu söyler 
+who → Kim ne zamandır açık onu söyler 
+chsh → Kabuk değiştirmek için kullanılır (change shell) 
+su → Switch user 
+sudo → Başka bir kullanıcı yerine işlem yapar 
+/etc/shells → Yüklü olan kabuklar 
+
+!! root rm -rf / → Kök dizin altındaki her şeyi siler. Sanalda yap o yüzden 
+file → Dosyanın ne olduğunu söyler 
+
+** ls 
+     sayfa1, sayfa10, sayfa11, sayfa12, sayfa13
+     ls sayfa* → hepsini görürüz
+     ls sayfa? → sayfa1 
+     ls sayfa ?? → sayfa10, sayfa11, sayfa12, sayfa13
+     ls sayfa *[0-2] → sayfa10, sayfa11, sayfa12
+
+Dosya Sisteminin Tuttuğu Bilgiler 
+-Filename      
+-Createdate
+-Size              
+-Access date (değiştirme tarihi)
+-Owner          
+-Group
+-Permissions  
+-Verinin diskteki adresi
+
+(distrowatch.com)
+
+Bir diski en fazla 4'e bölersin → /dev/sda1 
+                                      /sda2
+                                      /sda3
+                                      /sda4
+
+c → Karakter erişimli aygıtlar 
+
+13 AĞUSTOS CUMARTESİ
+
+ctrl C → Clear
+ctrl A → En başa gider 
+ctrl E → En sona gider 
+ctrl R → Arama, find gibi
+
+** asdf ghjk 
+     baş kısmı silmek istersen boşluğa gelip ctrl U
+     son kısmı silmek istersen boşluğa gelip ctrl K
+
+cat /etc/shells , genelde /bin/bash kabuğunu kullanırız 
+echo $PATH → bash'in hangi dizinler altına baktığı 
+
+
+alias sunucu = ' ssh root @192.168.100.200 -p 224'-> sunucu yazdığımız zaman artık bu komut çalışır.
+Alias → Takma isimlerle yapılmış komutları söyler 
+Unalias sunucu → Sunucu ismiyle verdiğim komutu kaldırır 
+
+& → süreci arka plana atar 
+mcrypt -d
+
+etc/passwd 
+ctrl Z → askıya alır 
+fg 1 → 1 numaralı komutu ön plana çağırır 
+jobs → arka planda çalışan işler 
+
+SINGLE USER MOD  
+
+Açınca gelen yerde e'ye basıp editle
+En alt satırın bir üstü ro'dan başlayıp long'a kadar sil
+rw int =/bin/bash ctrl X bas çalışsın. Kullanıcı kabuğuna geçersin root olarak.
+$komut p1 p2 p3.. → n tane çıktısı → /home/abc /                 p1/p2/p3.../p107/     p108.txt 
+                                   bulunduğumuz yer                   dizin             dosya
+
+cat normal yazılanı okur, sort alfabetik sıraya dizer 
+sort -r yazınca tersten alfabetik sıraya dizer 
+
+grep -v '..' → .. harici diğerlerini gösterir
+split -l test.txt cıktı_ → test.txt'yi 100 satırlık cıktı_ lara böler 
+418'lik bir test.txt'yi cıktı_aa  cıktı_ab  cıktı_ac  cıktı_ad  cıktı_ae  olarak böler
+                                    100       100         100         100         18
+diff test1 test2 → test1 ve test2 arasındaki farklar 
+
+md5sum dosya   $ {@: x: y} → aralık x başlangıç y son parametre $# son parametre
+vim lyk2016.sh → lyk2016.sh şeklinde dosya oluşturur içine yazılır hale gelir
+
+** mkdir $1
+   touch $1/$2 → oluşturduğun dizinin içine dosya oluşturur
+
+touch $2 yazarsam bulunduğum yere oluşturur
+
+${@: 1: $#-1} killall mozilla → mozillada açılmış her şeyi öldürür
+              pkill mozilla   → mozillada açılmış her şeyi öldürür
+
+14 AĞUSTOS PAZAR
+
+if [$yıl -eq 2016]
+then
+       oluştur
+fi
+
+== eştise (string)
+!= eşit değilse (string)
+
+-ne eşit değişse (not equal to)
+-lt küçükse (less than)
+-le küçük veya eşitse (less than or equal to)
+-gt büyükse (greater than)
+-ge büyük veya eşitse (greater than or equal to)
+
+seq 1 10 → yazarsam bu sayılar arasındaki sayıları yazar = {1..10}
+' , ` (alt ; yapınca, komut tırnağı), “ → tırnak çeşitleri        
+sayılar = `seq 1 10`
+
+if [-xxx  $dosya ]
+then 
+-xxx yerine;
+-s → dosya varsa ve içi doluysa 
+-f → dosya varsa ve dizin değilse 
+-d → dizin varsa 
+-x → çalıştırma izni varsa 
+-w → yazma izni varsa 
+-r → okuma izni varsa 
+
+**((   ;   ;   ))
+    echo “Hey!”  → sonsuza kadar Hey! yazar 
+
+ve && yerine -a (and) da yazabiliriz
+veya || yerine -o (or) da yazabiliriz
+
+if then the 
+for do done
+
+owncloud → google drive yerine 
+mount -0 remount , ro /home
+
+
+    TCP                                                     UDP
+Yolunu çizer.                                         Yolunu çizmez.
+Paket kaybı olmaz.                                    Paket kaybı olur.
+UDP'ye göre güvenli.                                  Güvenli değil, mesajların ulaşıp ulaşılmadığı bilinmez.
+Bağlantı temelli.                                     Bağlantısız.
+Sıralı.                                               Sira belirsiz.
+Uygulanması zor.                                      Uygulanması basit.
+Stream (1 kerede çok sayıda paket gönderebilir)       Tek seferde tek paket
+
+Gateway → Ağ geçidi, IP sağlıyor.
+192.168.0.0  → ilk iki kısım değişmez. Son iki değişir. Son iki networkun kendisini ifade eder. Bu IP'yi kimseye veremezsin.
+192.168.0.255 → broadcast
+İnternet otonom çalışır. İnternet = international network
+
+IP Blokları
+A sınıfı → 10. ….
+B sınıfı → 178. ….
+C sınıfı → 192. …. 
+
+RSA → Şifreleme 
+DSA → İmzalama
+
+İnternet merkezileşmediği sürece güvenlidir.
+
+16 AĞUSTOS SALI
+
+SSH = Güvenli kabuk, protokoldür. Http, Https, Port 22 ile çalışır 
+Protokoller üzerinde çalışan servisler var. Https'in webservice 
+Web sunucusu = Apache, ..
+
+127.0.0.1/8 → Mesela buna ağ denir. 
+IP + Netmask = Network
+127'li olan blok komple kullanılamaz
+Local host IP'si herkeste vardır. İzole edilmiştir.
+Ilk verilebilecek IP ya da son verilebilecek olan Ağ geçidi olarak tanımlanır.
+
+-Aynı networkte olmak
+-Kullanıcı adı ve parolasının olması → SSH balantısı yapmak için gereken 2 unsur 
+
+SSH'ın windows'taki karşılığı → Putty
+ 
+gpasswd -d sysadmin sudo → sysadmin gruplarından sudo'yu siler 
+echo $? yazınca 0 verirse çalışmıştır. Sıfırdan farklı bir değer varsa o zaman çalışmamıştır.
+
+Usermod -aG sudo sysadmin : sysadmin'e sudo grubunu ekler.
+Usermod -G yazarsan tüm grupları siler yerine sadece ekleyenin grubu ekler.
+
+**ssh_keygen -t rsa -C “mail adresini yaz.”
+    parola gir 
+    ls -l _ssh
+    cat d_rsa.pub
+
+!! Kopyalama yaparken full path yazmak zorundasın.
+→ lsblk → disk hakkında bilgi veriyor.
+
+** yum history 
+     yum history undo .. → hangi işlemi geri alacaksan onun numarasını yazarsın.
+
+** rpm -ql nano | grep ./etc
+     rpm -qc nano 
+
+→ sudoyla scp çalışmaz.
+** scp -P 2200 /home/test.txt  sema@10.10.10.10 (sema'nın IP'si): /home/sema/
+1-1024 arası port numaraları rezerve 
+
+NAT → Fiziksel bilgisayarla sanaldakinin iletişimini kurar.
+BRİDGE → Diğer networklerle iletişim kurar. Fiziksel bilgisayarın bağlı olduğu yerden IP alır.
+HOST – ONLY → İki sanal arasında iletişim kurar.
+
+ssh
+ssh sfs → Hedef sisteme ssh ile bağlanıp işlem yapıyoruz.
+ssh banner → Hedef sisteme ssh ile bağlanırsa afiş yapıyorsun ortaya bir şeyler yazıyorsun.
+ssh security
+ssh port-change   
+
+17 AĞUSTOS ÇARŞAMBA 
+
+Scp ile dizin taşımak istersek -r parametresiyle 
+
+**scp -r /etc root@egitim.profelis.com.tr : /tmp/hosts
+    scp /etc/hosts root@profelis.com.tr :/tmp/hosts
+
+yum install epel-relase 
+yum install sshfs
+
+sshfs kullnıcıadı@sunucuadresi./dizin/adresi/yerel/dizin_adresi
+
+**nano /etc/ssh/sshd_config (portun başındak, #'i sil, portu değiştir, kaydet çık, ctrl O,enter,ctrl X)
+   systemctl restart sshd
+   protocol2'nin başındaki #'i kaldır (ctrlW :protocol)
+   permit root login #'i kaldır, no yap. (ctrlW :root)
+
+MAC → Media Acces Control. Mac adresi bir cihazın ağ donanımını tanımaya yarar.
+
+lsb_relase a → İşletim sistemi hakkında bilgi verir. (CentOs'ta yok)
+Loopback tüm Linux dağıtımlarında bulunan ağ arayüzü
+DNS: Domain Name Server
+
+
+wget https://139.175.130.62/LYK/LYK2015     sed.zip awk.zip
+
+ADRES                                                                                               EYLEM 
+1,15 (1 ile 15. satırlar arası)                                                                   d → delete
+$ (Son satır)                                                                                     p → print
+|Ali|,|Veli| (Ali ile başlayıp Veli ile biten)
+
+sed 'komut'  dosya
+
+echo -e “1,a: 2,:3” |sed -f sed.o
+echo “a,b,c,d,e,f” |sed -f sed.1 → Alt alta yazdırır 
+/^/ → Satır başı 
+1,3d → 1,2,3 satırları sil
+1i → 1. satırın önüne yaz
+
+** cat SED.|A
+echo “abc xyz” | sed -f SED.1a
+cat SED.1b
+cat SED.1c
+echo “abxdfg” | sed -f SED.1c
+cat SED.1d
+echo “dbc elif ayse” | sed_f SED.1d
+grep firefox *txt
+ls
+sed -f SED.2 next.txt | more 
+sed /^$/d BB.txt| grep ^$
+
+!! cat turing.txt | tr A-Z a-z | sed -f SED.lyk|
+sor | uniq -c | sort -nr -k1,1| more 
+
+
+SUNUCUDA YAPILMASI GEREKENLER 
+1- Sunucuda bağlantı gerçekleştirmek istediğiniz kullanıcı kimse onun ev dizininde -ssh diye bir dizin olmalı.( /home/sema/.ssh )
+2- .ssh dizininin izinleri her zaman 700 izinlerinde olmalı.
+3- .ssh/authorized_keys isimli bir dosya olmalı. (touch ile oluşturur)
+4- .ssh/authorized_keys dosyanın izinleri 644 olmalı.
+5- Public key authorized_keys dosyalarının içine yazılır.
+
+** ssh -l sysadmin 10.48.185.232
+     scp …. (herhangi bir dosya) sysadmin 
+     (tmp'deyken) scp -r sema sysadmin@10.47.185.232:/tmp
+                                  -rp dersem bilgisayarımda oluşturduğum şekliyle atarım.(izinler,saatler vs.)
+touch dosya{1,5}
+          dosya1,dosya5
+
+rsync -avz backup_ sysadmin@10.47.185.232:/srv/backup
+a → dizin taşıdığımız için yapılan işlemleri görürüz.
+V → görürüz 
+Z → transferi gerçekleştirilen sıkıştırır, zipler
+_ → / koyarsak dosyaları atar , boşluk olursa dizini atar
+
+backup → 2 kez dizin oluşturur. Yazmazsan dizini oluşturup dosyayı atar.
+Rysnc -avz backup sema@10.47.186.193:tmp/backup → yedekleri bilgisayarıma atar.
+Rysnc -avz –progess → daha detaylı, ne kadar yüklendiğini vs. gösterir.
+Rysnc -avz -progress -delete.after backup/sysadmin@10.47.185.232:/srv/backup
+
+find . -type f -mtime +3 -exec rysnc -vz {} sysadmin@10.47.185.232:/srv/backup
+at/etc/passwd | awk -F ':' '{print $1: “:” $7}'
+
+ZAMANLANMIŞ GÖREVLER
+
+Epel → Depo
+crontab -l
+crontab -e → editlemek için 
+
+dakika  saat gün ay haftanın günü (0'dan başlarsın saymaya)
+    *         *     *    *            *
+
+55 16 * * 4 tar czf yedek.tar → her perşembe 16.55'te yedek alacak
+                              yedek.tar.gz  ~/*.txt~/*.pdf
+
+@reboot komutu bilgisayar açılınca komutu çalıştırır.
+
+Ssh sema@...
+screen → sanat terminal ekranı
+
+**tcpdump -i eth0 -w test.pcap → Dinlediğini buraya yazar.
+  tcpdump -r test.txt → Dosyayı okur.
+
+Ctrl + A + D → Screendeyken arka plana atar.
+
+Screen -r → Screene geri döner.
+Screen -ls → Arka planda çalışan ekranları gösterir.
+Screen -x -s … (numarasını yaz) quit → Öldürür
+
+**Screen -dms tcpdump_çalışıyor.24saat
+  Screen -ls → Böyle bir sanal terminal açar ve arka plana atar.
+
+IFTOP → Ağ kartına ait anlık olan genel trafiği gösterir. Varsayılan ağ kartını dinlemeye başlar. Kendimizi dinleriz
+
+iftop -i … (ethernet kartı) → O ağ kartını dinler.
+
+Scp 
+Screen 
+Iftop
+Strace
+Tcpdump
+Wireshark
+
+wordpress.org 
+Ayarlar /etc'nin altında bulunur.
+HTTP() → Apache web server 
+Wordpress → PHP
+SQL → MySQL/ Maria Db
+yum install mariadb mariadb_server
+
+SHOW DATABASES; Veritabanlarını listeler 
+USE Mysql;
+SHOW TABLES;
+CREATE DATABASE Wordpress;
+CREATE USER 'wordpress'@'localhost' identified by 'parola'; ( Kullanıcının parolası parola)
+USE Mysql 
+GRANT ALL PRIVILEGES ON WORDPRESS.*TO 'wordpress'@'localhost'identified by 'parola';
+FLUSH PRIVILAGES; → Ayarları kontrol et demek
+exit 
+
+yum install php php-mysql → burada wordpress.org'a gidip wordpress bağlantıyı kopyala
+wget install php 
+vim wp-config-sample.php
+cp -a wp-config-sample.php  wp-config.php
+vim wp-config.php
+mysql -u wordpress -p
+
+yum install httpd
+netstat -ntlpd
+touch wordpress.conf
+
+find . -type f -exec chmod 643 {}\;
+echo $EUID → root'un 0'dır 
+mysql -u root -p parolayı gir → Mysql'e girer
+mysql_secure_installation
+tar -xzvf 
+pwgen 16 -y -c → farklı parolalar üretir 
+vim /etc/sysconfig/selinux → selinux = disabled yap (wordpress kurmak için)
+yum install epel_relase
+
+systemctl           
+
+dns_utils
+net-tools
+htop
+nano
+vim
+
+Yaklaşık 1000 satırlık LYK 2017 Linux Sistem Yönetimi 1. Düzey'de almış olduğum notlar. Yanlış geçirdiğim yerler olabilir.
+Hataları düzeltmek için lütfen iletişime geçiniz.
+Sema DEMİR
+
+
+
